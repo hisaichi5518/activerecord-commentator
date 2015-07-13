@@ -23,8 +23,7 @@ Or install it yourself as:
 ### in Rails app
 
 ```ruby
-# config/initializers/commentator.rb
-
+# in config/initializers/commentator.rb
 require "active_record/commentator"
 
 ActiveRecord::Commentator::Configuration.paths = [
@@ -39,7 +38,7 @@ ActiveRecord::Base.connection.class.prepend(ActiveRecord::Commentator)
 bundle exec rails server
 ```
 
-## Rails Log
+## Rails application log
 
 ```
 # execute sql at model
@@ -49,12 +48,12 @@ bundle exec rails server
 Info Load (0.5ms)  SELECT  `infos`.* FROM `infos` /* /Users/hisaichi5518/projects/github.com/sample/app/cells/infos/index.html.erb:3:in `_app_cells_infos_index_html_erb___2113458239111152552_70242821135200' */
 ```
 
-## Slow log
+## Database slow log
 
 ```
-# Time: 110723 13:22:02
+# Time: 198723 23:21:34
 # User@Host: ... @ localhost []
-# Query_time: 7.677186  Lock_time: 0.156390 Rows_sent: 1  Rows_examined: 1386155
+# Query_time: 1.90872  Lock_time: 0.90879 Rows_sent: 1  Rows_examined: 9802714
 ...
 SELECT  `favorites`.`product_id` FROM `favorites` /* /Users/hisaichi5518/projects/github.com/sample/app/models/product.rb:28:in `block in <class:Product>' */
 ```
