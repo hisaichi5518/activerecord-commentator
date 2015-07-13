@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'active_record-commentator'
+gem 'activerecord-commentator'
 ```
 
 And then execute:
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install active_record-commentator
+    $ gem install activerecord-commentator
 
 ## Usage
 
