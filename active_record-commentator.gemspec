@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'activerecord/commentator/version'
+require 'active_record/commentator/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "activerecord-commentator"
-  spec.version       = Activerecord::Commentator::VERSION
+  spec.name          = "active_record-commentator"
+  spec.version       = ActiveRecord::Commentator::VERSION
   spec.authors       = ["hisaichi5518"]
   spec.email         = ["hisaichi5518@gmail.com"]
 

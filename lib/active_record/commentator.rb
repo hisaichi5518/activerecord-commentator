@@ -1,7 +1,7 @@
-require "activerecord/commentator/version"
-require "activerecord/commentator/configuration"
+require "active_record/commentator/version"
+require "active_record/commentator/configuration"
 
-module Activerecord
+module ActiveRecord
   module Commentator
     # ActiveRecord::ConnectionAdapters::DatabaseStatements#execute
     def execute(sql, name = nil)
@@ -11,7 +11,7 @@ module Activerecord
     private
     def fetch_execute_location
       locations = caller_locations.select do |location|
-        ::Activerecord::Commentator::Configuration.paths.any? { |re| re.match(location.absolute_path) }
+        ::ActiveRecord::Commentator::Configuration.paths.any? { |re| re.match(location.absolute_path) }
       end
 
       locations.first

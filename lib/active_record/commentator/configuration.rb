@@ -1,6 +1,6 @@
 require "active_support/configurable"
 
-module Activerecord
+module ActiveRecord
   module Commentator
     module Configuration
       include ActiveSupport::Configurable

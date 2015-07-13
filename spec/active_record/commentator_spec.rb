@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe Activerecord::Commentator do
+describe ActiveRecord::Commentator do
   let(:stringio) { StringIO.new }
-  let(:logger) { Logger.new(stringio) }
+  let(:logger)   { Logger.new(stringio) }
 
   before do
     ActiveRecord::Base.logger = logger
-    Activerecord::Commentator::Configuration.paths = [
+    ActiveRecord::Commentator::Configuration.paths = [
       /_spec\.rb/
     ]
-    ActiveRecord::Base.connection.extend(Activerecord::Commentator)
+    ActiveRecord::Base.connection.extend(ActiveRecord::Commentator)
   end
 
   describe "#execute" do
