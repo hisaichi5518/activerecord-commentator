@@ -5,7 +5,7 @@ module ActiveRecord
   module Commentator
     # ActiveRecord::ConnectionAdapters::DatabaseStatements#execute
     def execute(sql, name = nil)
-      new_sql = write_comment_to_sql(sql, fetch_execute_location.to_s)
+      new_sql = write_comment_to_sql(sql, fetch_execute_location)
       super(new_sql, name)
     end
 
