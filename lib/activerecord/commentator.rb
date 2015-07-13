@@ -2,6 +2,7 @@ require "activerecord/commentator/version"
 
 module Activerecord
   module Commentator
+    # ActiveRecord::ConnectionAdapters::DatabaseStatements#execute
     def execute(sql, name = nil)
       super(comment_to_sql(sql, fetch_execute_location), name)
     end
