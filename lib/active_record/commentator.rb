@@ -5,7 +5,8 @@ module ActiveRecord
   module Commentator
     # ActiveRecord::ConnectionAdapters::DatabaseStatements#execute
     def execute(sql, name = nil)
-      super(comment_to_sql(sql, fetch_execute_location), name)
+      new_sql = write_comment_to_sql(sql, fetch_execute_location)
+      super(new_sql, name)
     end
 
     private
@@ -17,7 +18,7 @@ module ActiveRecord
       locations.first
     end
 
-    def comment_to_sql(sql, comment)
+    def write_comment_to_sql(sql, comment)
       return sql unless comment
       sql + " /* #{comment} */ "
     end
