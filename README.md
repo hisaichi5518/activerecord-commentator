@@ -1,6 +1,6 @@
 # ActiveRecord::Commentator
 
-ActiveRecord::Commentator adds `caller_location` (filename and line-number) as SQL comment that invokes SQL statement.
+ActiveRecord::Commentator adds `caller_location` (filename, line-number and method-name) as SQL comment that invokes SQL statement.
 
 ## Installation
 
