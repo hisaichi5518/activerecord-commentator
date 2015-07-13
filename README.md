@@ -20,29 +20,43 @@ Or install it yourself as:
 
 ## Usage
 
-```
-# in Rails app
+### in Rails app
+
+```ruby
 # config/initializers/commentator.rb
+
 require "active_record/commentator"
 
 ActiveRecord::Commentator::Configuration.paths = [
   /#{Rails.root.join("app").to_s}|#{Rails.root.join("lib").to_s}/
 ]
 ActiveRecord::Base.connection.class.prepend(ActiveRecord::Commentator)
+```
 
-# Start server and visit localhost:3000
+### Start server and visit localhost:3000
+
+```
 bundle exec rails server
 ```
 
-## Sample Log
+## Rails Log
+
 ```
 # execute sql at model
-(0.3ms)  SELECT  `favorites`.`product_id` FROM `favorites` /* /Users/hisaichi5518/projects/github.com/sample/app/models/product.rb:28:in `block in <class:Product>'
-*/
+(0.3ms)  SELECT  `favorites`.`product_id` FROM `favorites` /* /Users/hisaichi5518/projects/github.com/sample/app/models/product.rb:28:in `block in <class:Product>' */
 
 # execute sql at view
-Info Load (0.5ms)  SELECT  `infos`.* FROM `infos` /* /Users/hisaichi5518/projects/github.com/sample/app/cells/infos/index.html.erb:3:in `_app_cells_infos_index_html_erb___2113458239111152552_70242821135200'
- */
+Info Load (0.5ms)  SELECT  `infos`.* FROM `infos` /* /Users/hisaichi5518/projects/github.com/sample/app/cells/infos/index.html.erb:3:in `_app_cells_infos_index_html_erb___2113458239111152552_70242821135200' */
+```
+
+## Slow log
+
+```
+# Time: 110723 13:22:02
+# User@Host: ... @ localhost []
+# Query_time: 7.677186  Lock_time: 0.156390 Rows_sent: 1  Rows_examined: 1386155
+...
+SELECT  `favorites`.`product_id` FROM `favorites` /* /Users/hisaichi5518/projects/github.com/sample/app/models/product.rb:28:in `block in <class:Product>' */
 ```
 
 ## Development
@@ -53,5 +67,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/hisaichi5518/active_record-commentator.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/hisaichi5518/activerecord-commentator.
