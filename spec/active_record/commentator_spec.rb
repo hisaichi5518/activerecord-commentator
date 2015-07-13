@@ -9,7 +9,7 @@ describe ActiveRecord::Commentator do
     ActiveRecord::Commentator::Configuration.paths = [
       /_spec\.rb/
     ]
-    ActiveRecord::Base.connection.extend(ActiveRecord::Commentator)
+    ActiveRecord::Base.connection.class.prepend(ActiveRecord::Commentator)
   end
 
   describe "#execute" do
