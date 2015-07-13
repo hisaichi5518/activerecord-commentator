@@ -1,4 +1,5 @@
 require "activerecord/commentator/version"
+require "activerecord/commentator/configuration"
 
 module Activerecord
   module Commentator

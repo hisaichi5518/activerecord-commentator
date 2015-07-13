@@ -1,11 +1,24 @@
 require 'spec_helper'
 
 describe Activerecord::Commentator do
-  it 'has a version number' do
-    expect(Activerecord::Commentator::VERSION).not_to be nil
+  let(:stringio) { StringIO.new }
+  let(:logger) { Logger.new(stringio) }
+
+  before do
+    ActiveRecord::Base.logger = logger
+    Activerecord::Commentator::Configuration.paths = [
+      /_spec\.rb/
+    ]
+    ActiveRecord::Base.connection.extend(Activerecord::Commentator)
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  describe "#execute" do
+    before do
+      ActiveRecord::Base.connection.execute("select 1")
+    end
+    it "includes execute location in log" do
+      output = stringio.tap(&:rewind).read
+      expect(output).to match(/#{__FILE__}:[0-9]+/)
+    end
   end
 end
