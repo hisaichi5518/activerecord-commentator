@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["hisaichi5518"]
   spec.email         = ["hisaichi5518@gmail.com"]
 
-  spec.summary       = %q{Add file name and line number as SQL comment.}
-  spec.description   = %q{Add file name and line number as SQL comment.}
+  spec.summary       = %q{adds `caller_location` as SQL comment}
+  spec.description   = %q{ActiveRecord::Commentator adds execute location (filename and line-number) as SQL comment that invokes SQL statement.}
   spec.homepage      = "https://github.com/hisaichi5518/activerecord-commentator"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

@@ -20,7 +20,7 @@ module ActiveRecord
 
     def write_comment_to_sql(sql, comment)
       return sql unless comment
-      sql + " /* #{comment} */ "
+      sql + " /* #{comment.chomp} */ "
     end
   end
 end

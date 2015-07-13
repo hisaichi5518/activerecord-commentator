@@ -1,5 +1,7 @@
 # ActiveRecord::Commentator
 
+ActiveRecord::Commentator adds `caller_location` (filename and line-number) as SQL comment that invokes SQL statement.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -17,6 +19,31 @@ Or install it yourself as:
     $ gem install activerecord-commentator
 
 ## Usage
+
+```
+# in Rails app
+# config/initializers/commentator.rb
+require "active_record/commentator"
+
+ActiveRecord::Commentator::Configuration.paths = [
+  /#{Rails.root.join("app").to_s}|#{Rails.root.join("lib").to_s}/
+]
+ActiveRecord::Base.connection.class.prepend(ActiveRecord::Commentator)
+
+# Start server and visit localhost:3000
+bundle exec rails server
+```
+
+## Sample Log
+```
+# execute sql at model
+(0.3ms)  SELECT  `favorites`.`product_id` FROM `favorites` /* /Users/hisaichi5518/projects/github.com/sample/app/models/product.rb:28:in `block in <class:Product>'
+*/
+
+# execute sql at view
+Info Load (0.5ms)  SELECT  `infos`.* FROM `infos` /* /Users/hisaichi5518/projects/github.com/sample/app/cells/infos/index.html.erb:3:in `_app_cells_infos_index_html_erb___2113458239111152552_70242821135200'
+ */
+```
 
 ## Development
 
