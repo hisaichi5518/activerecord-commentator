@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'active_record/commentator/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "active_record-commentator"
+  spec.name          = "activerecord-commentator"
   spec.version       = ActiveRecord::Commentator::VERSION
   spec.authors       = ["hisaichi5518"]
   spec.email         = ["hisaichi5518@gmail.com"]
